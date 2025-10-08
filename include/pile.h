@@ -1,3 +1,4 @@
+#include <stdbool.h>
 #ifndef UTILS
 #define UTILS
 typedef int equipe;
