@@ -10,6 +10,9 @@ test.o: test.c pile.h
 pile.o: pile.c pile.h
 	gcc $(CFLAGS) -c $<
 
+plateau.o: plateau.c plateau.h
+	gcc $(CFLAGS) -c $<
+
 clean:
 	rm -f test.o pile.o prog
 
