@@ -53,7 +53,7 @@ static void print_hedgehog_rows(plateau P, int i, int C) {
     printf("line ");
     for (int j = 0; j < C; j++) {
         /*récupération du premier hérisson sur la case*/
-        int h = P-[i][j].nb_herisson;
+        int h = P[i][j].nb_herisson;
         char a = get_token_char(P, i, j, 0);
 
         /*la case est-elle infectée ?*/
@@ -103,7 +103,7 @@ static void print_hedgehog_rows(plateau P, int i, int C) {
 /*
 Affiche la 4eme ligne : le nombre de hérissons empilés, format "-n-".
  */
-static void print_stack_counts(plateau *P, int i, int C) {
+static void print_stack_counts(plateau P, int i, int C) {
     printf("     ");
     for (int j = 0; j < C; j++) {
         if (P[i][j].est_piegee) {
@@ -124,7 +124,7 @@ static void print_stack_counts(plateau *P, int i, int C) {
  - Entêtes en haut et en bas
  - Pour chaque ligne : hérissons, pièges, compteurs
  */
-void affiche_plateau_ex(plateau *P, int L, int C, int dice_line) {
+void affiche_plateau_ex(plateau P, int L, int C, int dice_line) {
     (void)dice_line; // ignoré pour l'instant
     if (!P || L <= 0 || C <= 0) {
         puts("(plateau vide)");

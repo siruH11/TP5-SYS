@@ -10,6 +10,7 @@ typedef struct case_c {
     pile_c *pile_herisson;
 } Case; 
 
-typedef Case** plateau
+typedef Case** plateau;
+plateau create_plateau(void);
 
 #endif
