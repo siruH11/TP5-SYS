@@ -1,22 +1,20 @@
-#ifndef ROUNDS_H
-#define ROUNDS_H
+#ifndef ROUND_UTILS_H
+#define ROUND_UTILS_H
 
-#include "affiche_plateau.h"
 #include <stdbool.h>
+#include "plateau.h"
 
-// Lancer de dé 1..L
-int roll_die(int L);
+int  roll_dice();
 
-// Joue un tour complet pour le joueur `player_id` (0→A, 1→B, ...).
-// Retourne true si la partie s'arrête (≥3 hérissons du joueur en dernière colonne).
-bool play_round(plateau *P, int L, int C, int player_id);
+/* Déplacements horizontaux */
+bool can_move_right(const plateau P, int L, int C, int i, int j);
+void do_move_right(plateau P, int i, int j);
 
-// Helpers utiles si tu veux tester
-bool can_move_right(const plateau *P, int L, int C, int i, int j);
-void do_move_right(plateau *P, int i, int j);
+/* Déplacements verticaux pour un hérisson au sommet appartenant à player_id */
+bool can_move_vertical(const plateau P, int L, int C, int i, int j, int di, int player_id);
+void do_move_vertical(plateau P, int i, int j, int di);
 
-bool can_move_vertical(const plateau *P, int L, int C, int i, int j, int di, int player_id);
-void do_move_vertical(plateau *P, int i, int j, int di);
+/* Un tour de jeu interactif (retourne true si la partie se termine pour player_id) */
+bool play_round(plateau P, int L, int C, int player_id);
 
-#endif
-#endif
+#endif /* ROUND_UTILS_H */
