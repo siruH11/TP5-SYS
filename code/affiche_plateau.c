@@ -89,7 +89,7 @@ static void print_hedgehog_rows(plateau P, int i) {
             printf(" %c%c%c%c%c ",z1,b,b,b,z2);
         }
         else if (h==3) {
-            printf(" %c%c  %c%c ",z1,b,c,z2);
+            printf(" %c%c %c%c ",z1,b,c,z2);
         }
         else if (h>3) {
             printf(" %c%c%c%c%c ",z1,b,c,d,z2);
