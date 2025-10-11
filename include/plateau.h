@@ -12,5 +12,6 @@ typedef struct case_c {
 
 typedef Case** plateau;
 plateau create_plateau(void);
+void libere_plateau(plateau p);
 
 #endif
