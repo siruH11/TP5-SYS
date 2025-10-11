@@ -8,13 +8,10 @@
 #include <time.h>
 #include <ctype.h>
 
-/* --- RNG --- */
-int roll_die(void) {
+int roll_dice() {
     static int seeded = 0;
     if (!seeded) { srand((unsigned)time(NULL)); seeded = 1; }
-    int L = nb_lignes;
-    if (L <= 0) return 1;
-    return (rand() % L) + 1; /* 1..nb_lignes */
+    return (rand() % 6) + 1;
 }
 
 /* Y a-t-il un hérisson quelque part à gauche de (i,j) ? */
@@ -26,7 +23,6 @@ static int anyone_on_left(const plateau P, int i, int j) {
     return 0;
 }
 
-/* --- Mouvement horizontal (→) --- */
 bool can_move_right(const plateau P, int i, int j) {
     if (!P) return false;
     if (i < 0 || i >= nb_lignes || j < 0 || j >= nb_colonnes - 1) return false; /* pas de case à droite */
@@ -44,7 +40,6 @@ void do_move_right(plateau P, int i, int j) {
     P[i][j+1].nb_herisson++;
 }
 
-/* --- Mouvement vertical (↑/↓) --- */
 bool can_move_vertical(const plateau P, int i, int j, int di, int player_id) {
     if (!P) return false;
     if (i < 0 || i >= nb_lignes || j < 0 || j >= nb_colonnes) return false;
@@ -72,7 +67,6 @@ void do_move_vertical(plateau P, int i, int j, int di) {
     P[i+di][j].nb_herisson++;
 }
 
-/* --- Utilitaires de tour --- */
 static int list_right_moves(const plateau P, int line, int cols_out[], int cap) {
     if (!P || !cols_out || cap <= 0 || line < 0 || line >= nb_lignes) return 0;
     int n = 0;
@@ -105,11 +99,11 @@ static void flush_line(void) {
     while ((ch = getchar()) != '\n' && ch != EOF) {}
 }
 
-/* --- Un tour de jeu interactif --- */
+/* un round , renvoie true si un joueur a gagné false sinon*/
 bool play_round(plateau P, int player_id) {
     if (!P) return false;
 
-    int dice = roll_die();
+    int dice = roll_dice();
     int line = dice - 1;
 
     printf("\n=== Tour du joueur %c ===\n", 'A' + player_id);
