@@ -4,10 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "pile.h"
-int nb_lignes =3;
-int nb_colonnes =3;
-int nb_herisson = 2;
-int nb_joueurs =2;
+#include "globales.h"
 
 void test_pile(void){
     pile_c* p = create_pile(nb_herisson*nb_joueurs);
