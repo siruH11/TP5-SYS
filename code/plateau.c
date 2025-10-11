@@ -31,3 +31,14 @@ plateau create_plateau(void){
     }
 return(new_plateau);
 }
+
+void libere_plateau(plateau p){
+    for(int i = 0 ; i<nb_lignes; i++){
+        for(int j =0;j<nb_colonnes;j++){
+            libere_pile(p[i][j].pile_herisson);
+            free(p[i][j]);
+        }
+        free(p[i]);
+    }
+    free(p);
+}
