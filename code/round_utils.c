@@ -115,7 +115,7 @@ bool play_round(plateau P, int L, int C, int player_id) {
 
     printf("\n=== Tour du joueur %c ===\n", 'A' + player_id);
     printf("Dé: %d", dice);
-    affiche_plateau_ex(P, L, C, line);
+    affiche_plateau_ex(P, line);
 
     /* Déplacement vertical optionnel (un seul hérisson du joueur) */
     printf("Déplacement vertical (optionnel) ? (o/N) ");
@@ -137,7 +137,7 @@ bool play_round(plateau P, int L, int C, int player_id) {
                 printf("Mouvement vertical invalide, réessaie.\n");
             }
         }
-        affiche_plateau_ex(P, L, C, line);
+        affiche_plateau_ex(P,line);
     }
 
     /* Déplacement horizontal obligatoire sur la ligne tirée */
@@ -164,7 +164,7 @@ bool play_round(plateau P, int L, int C, int player_id) {
     do_move_right(P, line, cols[idx]);
 
     /* Affiche et teste condition de fin */
-    affiche_plateau_ex(P, L, C, -1);
+    affiche_plateau_ex(P, -1);
 
     int arrived = count_arrivals_player(P, L, C, player_id);
     if (arrived >= 3) {

@@ -84,8 +84,6 @@ int test_round_utils(void) {
 
     /* Nettoyage et restauration */
     destroy_plateau_local(P, nb_lignes, nb_colonnes);
-    nb_lignes = oldL;
-    nb_colonnes = oldC;
 
     printf("✅ test_round_utils: OK\n");
     return 0;
