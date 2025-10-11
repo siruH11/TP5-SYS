@@ -70,7 +70,7 @@ static void print_hedgehog_rows(plateau P, int i) {
     putchar('\n');
 
     /*ligne 3*/
-    printf("  %d  ",i);
+    printf("  %d  ",i+1);
     for (int j = 0; j < nb_colonnes; j++) {
         /*récupération des hérissons sur la case*/
         int h = P[i][j].nb_herisson;
