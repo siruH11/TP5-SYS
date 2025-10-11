@@ -140,4 +140,5 @@ void affiche_plateau_ex(plateau P, int L, int C, int dice_line) {
     }
     putchar('\n');
     print_column_headers(C);
+    printf("\n");
 }

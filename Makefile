@@ -8,16 +8,16 @@ TEST = tests/test_affichage.c tests/test_pile.c tests/test.c
 OBJ_SRC     = $(SRC:.c=.o)
 OBJ_TEST = $(TEST:.c=.o)
 
-test: $(TEST)
+EXEC_TEST= test
 
-$(TEST): $(OBJ_SRC) $(OBJ_TEST)
-	$(CC) $(LDFLAGS) $(OBJ_SRC) $(OBJ_TEST) -o test
+test: $(OBJ_SRC) $(OBJ_TEST)
+	$(CC) $(LDFLAGS) $(OBJ_SRC) $(OBJ_TEST) -o $(EXEC_TEST)
 
 # règle générique pour compiler n'importe quel .c -> .o (où qu'il soit)
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -f $(OBJ) $(EXEC)
+	rm -f $(OBJ_SRC) $(OBJ_TEST) $(EXEC_TEST)
 
-.PHONY: all clean
+.PHONY: all clean test

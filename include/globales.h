@@ -5,7 +5,7 @@ typedef struct pos_c{
     int colonne;
 }pos;
 
-extern pos* pos_piegee;
+extern pos pos_piegee[6];
 extern int taille_pos_piegee;
 extern int nb_lignes;
 extern int nb_colonnes;
