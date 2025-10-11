@@ -11,8 +11,7 @@
 int roll_dice() {
     static int seeded = 0;
     if (!seeded) { srand((unsigned)time(NULL)); seeded = 1; }
-    if (L <= 0) return 1;
-    return (rand() % 6) + 1;
+    return (rand() % 6) + 1;    
 }
 
 /* Y a-t-il un hérisson quelque part à gauche de (i,j) ? */
@@ -111,11 +110,11 @@ static void flush_line(void) {
 bool play_round(plateau P, int L, int C, int player_id) {
     if (!P) return false;
 
-    int dice = roll_die(L);
+    int dice = roll_dice();
     int line = dice - 1;
 
     printf("\n=== Tour du joueur %c ===\n", 'A' + player_id);
-    printf("Dé: %d  -> ligne %d\n", dice, line);
+    printf("Dé: %d", dice);
     affiche_plateau_ex(P, L, C, line);
 
     /* Déplacement vertical optionnel (un seul hérisson du joueur) */
@@ -150,7 +149,9 @@ bool play_round(plateau P, int L, int C, int player_id) {
     }
 
     printf("Choisis une colonne à avancer vers la droite parmi: ");
-    for (int k = 0; k < n; ++k) printf("%c  ", 'a' + cols[k]);
+    for (int k = 0; k < n; ++k) {
+        printf("%c  ", 'a' + cols[k]);
+    }
     printf("\nEntre l'indice 0..%d: ", n-1);
 
     int idx = -1;
