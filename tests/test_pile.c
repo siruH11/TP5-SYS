@@ -1,4 +1,4 @@
-#include "include/pile.h"
+#include "pile.h"
 #include <assert.h>
 #include <stdbool.h>
 #include <stdint.h>

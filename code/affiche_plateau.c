@@ -1,4 +1,4 @@
-#include "include/affiche_plateau.h"
+#include "affiche_plateau.h"
 #include <ctype.h>
 
 /*idée on va faire 4 fonctions pour print les 4 lignes de chaque colonne*/

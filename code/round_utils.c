@@ -1,4 +1,5 @@
-#include "include/round_utils.h"
+#include "round_utils.h"
+#include "globales.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>

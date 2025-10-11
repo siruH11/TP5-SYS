@@ -1,6 +1,6 @@
-#include "include/pile.h"
-#include "include/plateau.h"
-#include "include/affiche_plateau.h"
+#include "pile.h"
+#include "plateau.h"
+#include "affiche_plateau.h"
 #include <assert.h>
 #include <stdbool.h>
 #include <stdint.h>

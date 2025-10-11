@@ -1,7 +1,7 @@
 //fonction create_plateau à faire
 #include <stdlib.h>
 #include "globales.h"
-#include "include/pile.h"
+#include "pile.h"
 
 plateau create_plateau(void){
         srand( time( NULL ) );

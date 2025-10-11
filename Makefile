@@ -2,15 +2,16 @@ CC       = gcc
 CFLAGS   = -Wall -Wextra -Wno-unused-parameter -Werror -Iinclude
 LDFLAGS  = -g
 
-SRC      = include/pile.c include/plateau.c affiche_plateau.c test.c 
+SRC      = code/pile.c code/plateau.c code/affiche_plateau.c code/globales.c 
+TEST = tests/test_affichage.c tests/test_pile.c tests/test.c
 #fichier c dont on veut le.o
-OBJ      = $(SRC:.c=.o)
-EXEC     = prog
+OBJ_SRC     = $(SRC:.c=.o)
+OBJ_TEST = $(TEST:.c=.o)
 
-all: $(EXEC)
+test: $(TEST)
 
-$(EXEC): $(OBJ)
-	$(CC) $(LDFLAGS) $(OBJ) -o $(EXEC)
+$(TEST): $(OBJ_SRC) $(OBJ_TEST)
+	$(CC) $(LDFLAGS) $(OBJ_SRC) $(OBJ_TEST) -o test
 
 # règle générique pour compiler n'importe quel .c -> .o (où qu'il soit)
 %.o: %.c

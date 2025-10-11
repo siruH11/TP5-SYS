@@ -1,7 +1,7 @@
 #ifndef ROUNDS_H
 #define ROUNDS_H
 
-#include "include/affiche_plateau.h"
+#include "affiche_plateau.h"
 #include <stdbool.h>
 
 // Lancer de dé 1..L
