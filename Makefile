@@ -1,9 +1,9 @@
 CC       = gcc 
-CFLAGS   = -Wall -Wextra -Wno-unused-parameter -Werror -Iinclude
+CFLAGS   = -Wall -Wextra -Wno-unused-parameter -Werror -Iinclude -g
 LDFLAGS  = -g
 
 SRC      = code/pile.c code/plateau.c code/affiche_plateau.c code/globales.c 
-TEST = tests/test_affichage.c tests/test_pile.c tests/test.c
+TEST = tests/test_affichage.c tests/test_pile.c tests/test.c tests/test_plateau.c
 #fichier c dont on veut le.o
 OBJ_SRC     = $(SRC:.c=.o)
 OBJ_TEST = $(TEST:.c=.o)

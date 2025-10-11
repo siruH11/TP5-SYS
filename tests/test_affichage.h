@@ -4,6 +4,6 @@
 #include "pile.h"
 #include "plateau.h"
 #include "affiche_plateau.h"
-int test_plateau(void);
+int test_affiche_plateau(void);
 
 #endif

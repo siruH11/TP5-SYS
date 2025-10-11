@@ -8,6 +8,8 @@
 
 int main() {
     test_pile();
+    test_affiche_plateau();
     test_plateau();
+
     return 0;
 }
