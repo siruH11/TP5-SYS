@@ -3,7 +3,7 @@
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include "pile.h"
+#include "include/pile.h"
 
 pile_c* create_pile(int capacite){  
     equipe* tab_stock = malloc(capacite*sizeof(equipe));

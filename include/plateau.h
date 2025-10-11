@@ -10,10 +10,6 @@ typedef struct case_c {
     pile_c *pile_herisson;
 } Case; 
 
-typedef struct plateau_c {
-    Case **plateau;
-    int    nb_herisson;
-    int    nb_joueurs;
-} plateau;
+typedef Case** plateau
 
 #endif

@@ -1,8 +1,9 @@
-CC       = gcc
+CC       = gcc 
 CFLAGS   = -Wall -Wextra -Wno-unused-parameter -Werror -Iinclude
 LDFLAGS  = -g
 
-SRC      = include/pile.c include/plateau.c affiche_plateau.c test.c
+SRC      = include/pile.c include/plateau.c affiche_plateau.c test.c 
+#fichier c dont on veut le.o
 OBJ      = $(SRC:.c=.o)
 EXEC     = prog
 

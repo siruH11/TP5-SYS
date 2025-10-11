@@ -10,55 +10,55 @@ int roll_die(int L) {
     return (rand() % L) + 1; // 1..L
 }
 
-static int anyone_on_left(const plateau *P, int C, int i, int j) {
-    for (int x = 0; x < j; ++x) if (P->plateau[i][x].nb_herisson > 0) return 1;
+static int anyone_on_left(const plateau P, int C, int i, int j) {
+    for (int x = 0; x < j; ++x) if (P[i][x].nb_herisson > 0) return 1;
     return 0;
 }
 
-bool can_move_right(const plateau *P, int L, int C, int i, int j) {
+bool can_move_right(const plateau P, int L, int C, int i, int j) {
     (void)L;
     if (i < 0 || j < 0 || j >= C-1) return false;              // pas de case à droite
-    if (P->plateau[i][j].nb_herisson == 0) return false;       // vide
-    if (P->plateau[i][j].est_piegee && anyone_on_left(P, C, i, j)) return false; // bloqué par la règle du piège
+    if (P[i][j].nb_herisson == 0) return false;       // vide
+    if (P[i][j].est_piegee && anyone_on_left(P, C, i, j)) return false; // bloqué par la règle du piège
     return true;
 }
 
-void do_move_right(plateau *P, int i, int j) {
-    int tok = pop(P->plateau[i][j].pile_herisson);
+void do_move_right(plateau P, int i, int j) {
+    int tok = pop(P[i][j].pile_herisson);
     if (tok < 0) return;
-    P->plateau[i][j].nb_herisson--;
-    push(P->plateau[i][j+1].pile_herisson, tok);
-    P->plateau[i][j+1].nb_herisson++;
+    P[i][j].nb_herisson--;
+    push(P[i][j+1].pile_herisson, tok);
+    P[i][j+1].nb_herisson++;
 }
 
-bool can_move_vertical(const plateau *P, int L, int C, int i, int j, int di, int player_id) {
+bool can_move_vertical(const plateau P, int L, int C, int i, int j, int di, int player_id) {
     (void)C;
     if (i < 0 || i >= L || j < 0) return false;
     if (di != -1 && di != +1) return false;
     int ni = i + di;
     if (ni < 0 || ni >= L) return false;
-    if (P->plateau[i][j].nb_herisson == 0) return false;
+    if (P[i][j].nb_herisson == 0) return false;
 
     // sommet doit appartenir au joueur
-    int top = peek(P->plateau[i][j].pile_herisson, 0);
+    int top = peek(P[i][j].pile_herisson, 0);
     if (top < 0) return false;
     if (top != player_id) return false; // 0->A, 1->B, ... (tes entiers 0..25)
 
     // pas de sortie de piège si des hérissons à gauche
-    if (P->plateau[i][j].est_piegee && anyone_on_left(P, C, i, j)) return false;
+    if (P[i][j].est_piegee && anyone_on_left(P, C, i, j)) return false;
 
     return true;
 }
 
-void do_move_vertical(plateau *P, int i, int j, int di) {
-    int tok = pop(P->plateau[i][j].pile_herisson);
+void do_move_vertical(plateau P, int i, int j, int di) {
+    int tok = pop(P[i][j].pile_herisson);
     if (tok < 0) return;
-    P->plateau[i][j].nb_herisson--;
-    push(P->plateau[i+di][j].pile_herisson, tok);
-    P->plateau[i+di][j].nb_herisson++;
+    P[i][j].nb_herisson--;
+    push(P[i+di][j].pile_herisson, tok);
+    P[i+di][j].nb_herisson++;
 }
 
-static int list_right_moves(const plateau *P, int L, int C, int line, int cols_out[], int cap) {
+static int list_right_moves(const plateau P, int L, int C, int line, int cols_out[], int cap) {
     int n = 0;
     for (int j = 0; j < C-1; ++j) {
         if (can_move_right(P, L, C, line, j)) {
@@ -69,20 +69,20 @@ static int list_right_moves(const plateau *P, int L, int C, int line, int cols_o
     return n;
 }
 
-static int count_arrivals_player(const plateau *P, int L, int C, int player_id) {
+static int count_arrivals_player(const plateau P, int L, int C, int player_id) {
     int count = 0;
     int last = C - 1;
     for (int i = 0; i < L; ++i) {
-        int h = P->plateau[i][last].nb_herisson;
+        int h = P[i][last].nb_herisson;
         for (int k = 0; k < h; ++k) {
-            int tok = peek(P->plateau[i][last].pile_herisson, k); // k=0 sommet, k=h-1 fond
+            int tok = peek(P[i][last].pile_herisson, k); // k=0 sommet, k=h-1 fond
             if (tok == player_id) count++;
         }
     }
     return count;
 }
 
-bool play_round(plateau *P, int L, int C, int player_id) {
+bool play_round(plateau P, int L, int C, int player_id) {
     int dice = roll_die(L);
     int line = dice - 1;
 

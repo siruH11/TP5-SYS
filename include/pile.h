@@ -1,6 +1,7 @@
-#include <stdbool.h>
 #ifndef UTILS
 #define UTILS
+
+#include <stdbool.h>
 typedef int equipe;
 
 typedef struct pile{
@@ -15,7 +16,7 @@ void push(pile_c* p,int x);
 equipe pop(pile_c* p);
 int taille(pile_c* p);
 equipe top(pile_c* p);
-equipe peek(pile_c *p ,int pos);
+equipe peek(pile_c *p ,int pos);//renvoie le pos-ieme elem de la pile
 void libere_pile(pile_c* p);
 bool is_empty(pile_c* p);
 
