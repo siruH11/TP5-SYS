@@ -22,18 +22,9 @@ static void destroy_plateau_local(plateau P, int L, int C) {
 }
 
 int test_round_utils(void) {
-    /* On fabrique un petit plateau 3x4 via create_plateau() */
-    int oldL = nb_lignes, oldC = nb_colonnes;
-    nb_lignes  = 3;
-    nb_colonnes = 4;
 
     plateau P = create_plateau();
     assert(P && "create_plateau() a renvoyé NULL");
-
-    /* On neutralise les pièges posés par pos_piegee pour partir d'un état propre */
-    for (int i = 0; i < nb_lignes; ++i)
-        for (int j = 0; j < nb_colonnes; ++j)
-            P[i][j].est_piegee = false;
 
     /* --- can_move_right: case vide -> false --- */
     assert(!can_move_right(P, nb_lignes, nb_colonnes, 1, 1));
