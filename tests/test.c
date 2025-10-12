@@ -6,11 +6,14 @@
 #include "test_pile.h"
 #include "test_affichage.h"
 #include "test_round_utils.h"
+#include "round.h"
+#include "test_round.h"
 
 int main() {
     test_pile();
     test_affiche_plateau();
     test_plateau();
     test_round_utils();
+    test_round();
     return 0;
 }
