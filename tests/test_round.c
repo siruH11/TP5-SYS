@@ -7,6 +7,6 @@
 
 int test_round() {
     plateau P = create_plateau();
-    play_round(P,1);
+    play_round(P,0);
     return 0;
 }

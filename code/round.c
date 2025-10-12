@@ -16,7 +16,8 @@ bool play_round(plateau P, int player_id) {
     int line = dice - 1;
 
     printf("\n=== Tour du joueur %c ===\n", 'A' + player_id);
-    printf("Dé: %d  -> ligne %d\n", dice, line);
+    printf("Dé: %d", dice);
+    putchar('\n');
     affiche_plateau_ex(P, line);
 
     /* Déplacement vertical optionnel (un seul hérisson du joueur) */
@@ -39,6 +40,8 @@ bool play_round(plateau P, int player_id) {
                 printf("Mouvement vertical invalide, réessaie.\n");
             }
         }
+        printf("Dé: %d", dice);
+        putchar('\n');
         affiche_plateau_ex(P, line);
     }
 
@@ -46,7 +49,7 @@ bool play_round(plateau P, int player_id) {
     int cols[128];
     int n = list_right_moves(P, line, cols, (int)(sizeof cols / sizeof *cols));
     if (n == 0) {
-        printf("Aucun hérisson ne peut avancer sur la ligne %d. Tour terminé.\n", line);
+        printf("Aucun hérisson ne peut avancer sur la ligne %d. Tour terminé.\n", line+1);
         return false;
     }
 
