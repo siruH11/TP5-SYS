@@ -25,7 +25,7 @@ int anyone_on_left(plateau P, int i, int j) {
 
 bool can_move_right(plateau P, int i, int j) {
     if (!P) return false;
-    if (i < 0 || i >= nb_lignes || j < 0 || j >= nb_colonnes - 1) return false; /* pas de case à droite */
+    if (i < 0 || i >= nb_lignes || j < 0 || j >= nb_colonnes) return false; /* pas de case à droite */
     if (P[i][j].nb_herisson == 0) return false;                                  /* case vide */
     if (P[i][j].est_piegee && anyone_on_left(P, i, j)) return false;             /* règle du piège */
     return true;

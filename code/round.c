@@ -27,7 +27,7 @@ bool play_round(plateau P, int player_id) {
     if (c=='o'||c=='O'||c=='y'||c=='Y') {
         while (1) {
             int i, j; char d;
-            printf("Saisis: i j d (u=up, d=down), ou -1 pour passer: ");
+            printf("Saisis: i j puis (u=up, d=down), ou -1 pour passer: ");
             if (scanf("%d", &i) != 1) { flush_line(); break; }
             if (i < 0) { flush_line(); break; }
             if (scanf("%d %c", &j, &d) != 2) { flush_line(); continue; }
@@ -55,7 +55,7 @@ bool play_round(plateau P, int player_id) {
 
     printf("Choisis une colonne à avancer vers la droite parmi: ");
     for (int k = 0; k < n; ++k) printf("%c  ", 'a' + cols[k]);
-    printf("\nEntre l'indice 0..%d: ", n-1);
+    printf("\nEntre l'indice 0 et %d: ", n-1);
 
     int idx = -1;
     while (scanf("%d", &idx) != 1 || idx < 0 || idx >= n) {
