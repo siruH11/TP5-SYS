@@ -1,2 +1,3 @@
 Pour l'utilisation normale : "make test"
 Pour supprimer : "make clean"
+Quand on joue et qu'il faut mettre les lignes i et colonnes j elles sont indexés à partir de 0.
