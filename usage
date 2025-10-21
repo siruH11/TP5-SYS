@@ -1,0 +1,2 @@
+Pour l'utilisation normale : "make test"
+Pour supprimer : "make clean"
